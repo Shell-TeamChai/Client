@@ -1,10 +1,11 @@
 import React from 'react';
+import Navbar from './components/nav/Navbar';
 
 const App = () => {
   return(
-    <>
-      Team Chai
-    </>
+    <div style={{minWidth: '100vw', minHeight: '100vh'}}>
+      <Navbar />
+    </div>
   )
 }
 
