@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from './components/nav/Navbar';
+import Landing from './pages/Landing';
 
 const App = () => {
   return(
     <div style={{minWidth: '100vw', minHeight: '100vh'}}>
-      <Navbar />
+      <Landing />
     </div>
   )
 }
