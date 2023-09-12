@@ -2,6 +2,7 @@ import React from 'react';
 import Landing from './pages/Landing';
 import Feedback from './pages/Feedback';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ContactUs from './pages/ContactUs';
 
 const App = () => {
   return(
@@ -10,7 +11,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
           {/* <Route index element={<Home />} /> */}
-          <Route path="feedback" element={<Feedback />} />
+          <Route path="/feedback" element={<Feedback />} />
+          <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
     </BrowserRouter>
     </div>
