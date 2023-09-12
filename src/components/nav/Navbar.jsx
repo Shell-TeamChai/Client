@@ -15,6 +15,10 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import logo from '../../assets/logo.png';
+import {Link} from 'react-router-dom';
+import ContactPageIcon from '@mui/icons-material/ContactPage';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -121,12 +125,26 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
+      <IconButton
+          size="large"
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+          <FeedbackIcon />
+        </IconButton> 
+        <Link to='/feedback' style={{textDecoration: 'none'}}>
+      <p style={{color: '#000'}}>Feedback</p>
+      </Link>
+      </MenuItem>
+      <MenuItem>
+      <IconButton
+          size="large"
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+          <ContactPageIcon />
+        </IconButton> 
+      <p>Contact Us</p>
       </MenuItem>
       <MenuItem>
         <IconButton
@@ -162,24 +180,30 @@ export default function PrimarySearchAppBar() {
      <Box>
       <AppBar position="static" style={{minHeight: '9vh', width: '100vw', backgroundColor: '#ffcc00'}}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
+          <Link to="/">
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              sx={{ mr: 2 }}
+            >
+              {/* <MenuIcon /> */}
+              <img src={logo} style={{width: '3.5vw', height: '5vh'}} />
+            </IconButton>
+          </Link>
+        <Link to='/' style={{textDecoration: 'none'}}>
+        <Typography
             variant="h6"
             noWrap
             component="div"
+            style={{ color: '#fff'}}
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
             EV management
           </Typography>
-          <Search>
+        </Link>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -187,18 +211,21 @@ export default function PrimarySearchAppBar() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            {/* <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
+            <Link to='/feedback' style={{textDecoration: 'none'}}><Typography style={{marginTop: '2vh', color: '#fff'}}>Feedback</Typography></Link>
+            <Typography style={{marginTop: '2vh', marginLeft: '2vw'}}>Contact Us</Typography>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              style={{marginLeft: '1vw'}}
             >
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />

@@ -41,12 +41,23 @@ export default function BasicModal() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Typography id="modal-modal-title" variant="h6" component="h2" style={{textAlign: 'center'}}>
                     Feedback
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                </Typography>
+                <label style={{marginTop: '3vh'}}>
+                    Enter your name
+                </label>
+                <br />
+                <textarea name="Text1" cols="50" rows="1" placeholder='Enter name'></textarea>
+                <br/>
+                <label style={{marginTop: '5vh'}}>
+                    Submit Feedback
+                </label>
+                <br />
+                <textarea name="Text1" cols="50" rows="5" placeholder='Enter feedback'></textarea>
+                <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                <Button variant='contained' style={{marginTop: '3vh', marginLeft: '2vw', fontSize: '10px'}}>Submit</Button>
+                </div>
                 </Box>
             </Modal>
             <Modal
@@ -56,12 +67,26 @@ export default function BasicModal() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Typography id="modal-modal-title" variant="h6" component="h2" style={{textAlign: 'center'}}>
                     Issue
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                </Typography>
+                <label style={{marginTop: '3vh'}}>
+                    Enter your name
+                </label>
+                <br />
+                {/* <input name='name' placeholder='Enter name' type='text' style={{padding: '5px 10px', marginTop: '0.5vh', width: '30vw'}} />
+                <br/> */}
+                <textarea name="Text1" cols="50" rows="1" placeholder='Enter name'></textarea>
+                <br/>
+                <label style={{marginTop: '5vh'}}>
+                    Raise an Issue
+                </label>
+                <br />
+                {/* <input name='issue' placeholder='Enter issue' type='text' style={{padding: '5px 10px', marginTop: '0.5vh', width: '30vw'}} multiple /> */}
+                <textarea name="Text1" cols="50" rows="5" placeholder='Enter issue'></textarea>
+                <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                <Button variant='contained' style={{marginTop: '3vh', marginLeft: '2vw', fontSize: '10px'}}>Submit</Button>
+                </div>
                 </Box>
             </Modal>
         </Grid>
