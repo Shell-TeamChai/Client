@@ -220,7 +220,7 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton> */}
             <Link to='/feedback' style={{textDecoration: 'none'}}><Typography style={{marginTop: '2vh', color: '#fff'}}>Feedback</Typography></Link>
-            <Typography style={{marginTop: '2vh', marginLeft: '2vw'}}>Contact Us</Typography>
+            <Link to='/contact-us' style={{textDecoration: 'none'}}><Typography style={{marginTop: '2vh', marginLeft: '2vw'}}>Contact Us</Typography></Link>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
