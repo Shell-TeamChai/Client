@@ -144,7 +144,9 @@ export default function PrimarySearchAppBar() {
         >
           <ContactPageIcon />
         </IconButton> 
-      <p>Contact Us</p>
+      <Link to='/contact-us' style={{textDecoration: 'none'}}>
+      <p style={{color: '#000'}}>Contact Us</p>
+      </Link>
       </MenuItem>
       <MenuItem>
         <IconButton
@@ -220,7 +222,7 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton> */}
             <Link to='/feedback' style={{textDecoration: 'none'}}><Typography style={{marginTop: '2vh', color: '#fff'}}>Feedback</Typography></Link>
-            <Link to='/contact-us' style={{textDecoration: 'none'}}><Typography style={{marginTop: '2vh', marginLeft: '2vw'}}>Contact Us</Typography></Link>
+            <Link to='/contact-us' style={{textDecoration: 'none'}}><Typography style={{marginTop: '2vh', marginLeft: '2vw', color: '#fff'}}>Contact Us</Typography></Link>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
