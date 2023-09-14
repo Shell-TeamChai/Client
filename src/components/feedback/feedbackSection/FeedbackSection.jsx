@@ -15,7 +15,7 @@ import Sarthak from '../../../assets/Sarthak.jpeg';
 export default function App() {
   return (
     <>
-      <Grid container lg={12} md={12} style={{marginTop: '10vh', minHeight: '60vh', width: '100vw'}}>
+      <Grid container lg={12} md={12} style={{marginTop: '15vh', minHeight: '60vh', width: '100vw'}}>
         <Grid item lg={12} md={12}>
         <Swiper
         pagination={{

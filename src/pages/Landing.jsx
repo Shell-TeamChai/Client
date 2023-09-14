@@ -11,7 +11,7 @@ const Landing = () => {
             <div style={{minHeight: '100vh'}}>
             <Navbar />
             <LandingInfo />
-            {/* <Maps /> */}
+            <Maps />
             <FeedbackSection />
             </div>
             <Footer />
