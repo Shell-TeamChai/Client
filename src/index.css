@@ -9,6 +9,14 @@ body {
   overflow-x: hidden;
 }
 
+::-webkit-scrollbar{
+  width: 8px
+}
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(#d92b1b, #ffcc00);
+  border-radius: 20px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

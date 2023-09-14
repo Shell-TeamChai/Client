@@ -10,7 +10,7 @@ import CopyrightIcon from '@mui/icons-material/Copyright';
 const Footer = () => {
   return (
     <>
-    <hr style={{width: '100vw', left: 0, bottom: 0}} />
+    <hr style={{width: '100vw', left: 0, bottom: 0, marginTop: '15vh'}} />
       <Grid container lg={12} md={12} justify='center' style={{justifyContent: 'center'}}>
         <Grid item lg={2} md={2}>
           <div style={{display: 'flex', flexDirection: 'row'}}>
