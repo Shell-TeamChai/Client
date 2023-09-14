@@ -40,9 +40,18 @@ class MapComponent extends Component {
       zoom: 14, // Default zoom level
     });
 
+    this.setState({ map }, () => {
+      this.renderSelectedPlacesMarkers(); // Render pre-selected locations as markers
+    });
+
     // Create directions service and renderer
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer();
+
+    directionsRenderer.setMap(map);
+
+    // Set up the map click event listener
+    map.addListener('click', this.handleMapClick);
 
     // Create places service
     const placesService = new google.maps.places.PlacesService(map);
@@ -56,11 +65,55 @@ class MapComponent extends Component {
 
     if ('geolocation' in navigator) {
       this.getCurrentLocation();
-      this.renderSelectedPlacesMarkers();
+      // this.renderSelectedPlacesMarkers();
     } else {
       console.error('Geolocation is not available in this browser.');
     }
   }
+
+  handleMapClick = (event) => {
+    const { google } = window;
+    const { directionsService, map } = this.state;
+  
+    if (google) {
+      const destinationLatLng = event.latLng;
+      this.setState(
+        {
+          destination: destinationLatLng,
+        },
+        () => {
+          this.calculateAndDisplayDirections();
+        }
+      );
+      new google.maps.Marker({
+        map,
+        position: destinationLatLng,
+      });
+    }
+  };
+
+  calculateAndDisplayDirections = () => {
+    const { directionsService, directionsRenderer, origin, destination } = this.state;
+  
+    if (!origin || !destination) {
+      console.error('Origin or destination is missing.');
+      return;
+    }
+  
+    const request = {
+      origin,
+      destination,
+      travelMode: 'DRIVING', // You can change this based on your needs
+    };
+  
+    directionsService.route(request, (response, status) => {
+      if (status === 'OK') {
+        directionsRenderer.setDirections(response);
+      } else {
+        console.error('Directions request failed:', status);
+    }
+  });
+};
 
   getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition(
@@ -261,7 +314,7 @@ class MapComponent extends Component {
         <button onClick={this.handleDirectionsSubmit}>Get Directions</button>
         <button onClick={this.getCurrentLocation}>Use Current Location</button>
       </div>
-      <div id="map" style={{ height: '75vh', width: '100%' }} />
+      <div id="map" style={{ height: '85vh', width: '100%' }} />
       <div>
         <h2>Places</h2>
         <ul>
