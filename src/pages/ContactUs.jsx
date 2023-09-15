@@ -103,7 +103,7 @@ const ContactUs = () => {
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
-                                        Priya Bleh
+                                        Priya Aggarwal
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
                                         SE

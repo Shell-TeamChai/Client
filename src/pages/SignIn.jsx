@@ -5,7 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -85,6 +86,7 @@ export default function SignIn() {
                             control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
                         />
+                        <Link to='/'>
                         <Button
                             type="submit"
                             fullWidth
@@ -93,6 +95,7 @@ export default function SignIn() {
                         >
                             Sign In
                         </Button>
+                        </Link>
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">
@@ -100,7 +103,7 @@ export default function SignIn() {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link to="/sign-up">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>

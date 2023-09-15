@@ -77,7 +77,7 @@ const ClientFeedback = () => {
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                         >
-                        <Typography>{issue.user.fname} {issue.user.lname}</Typography>
+                        <Typography>John Doe</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                         <Typography>

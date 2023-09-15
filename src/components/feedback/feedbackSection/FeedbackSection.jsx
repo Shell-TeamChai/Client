@@ -15,6 +15,7 @@ import Sarthak from '../../../assets/Sarthak.jpeg';
 export default function App() {
  
   const [feedbacks, setFeedbacks] = useState([]);
+  const [stations, setStations] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:5128/api/Feedbacks/')
@@ -26,7 +27,6 @@ export default function App() {
       return response.json(); // Parse the response body as JSON
     })
     .then((data) => {
-      console.log(data);
       setFeedbacks(data);
       // setData(data); // Update the data state with fetched data
       // setLoading(false); // Set loading to false
@@ -37,6 +37,28 @@ export default function App() {
       // setLoading(false); // Set loading to false
     });
   }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:5128/api/StationInfo/all')
+    .then((response) => {
+      // Check if the response is successful (status code 200)
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse the response body as JSON
+    })
+    .then((data) => {
+      setStations(data);
+      // setData(data); // Update the data state with fetched data
+      // setLoading(false); // Set loading to false
+    })
+    .catch((error) => {
+      console.log(error);
+      // setError(error); // Set error state if there's an error
+      // setLoading(false); // Set loading to false
+    });
+  }, []);
+
 
   return (
     <>
@@ -54,11 +76,11 @@ export default function App() {
         {
           feedbacks.map((item, index) => (
             <SwiperSlide style={{backgroundColor: '#ffcc00', display: 'flex', flexDirection: 'column'}}>
-            <Avatar alt="Priya Aggarwal" src={Bleh} sx={{ width: 56, height: 56 }} />
-              <Typography variant='body1'>{
-               
-              }</Typography>
-              <Rating name="read-only" value={4} readOnly style={{marginTop: '1vh'}} />
+            {/* <Avatar alt={`${item.user.fname} ${item.user.lname}`} src={Bleh} sx={{ width: 56, height: 56 }} /> */}
+              <Typography variant='body1'>
+               {item.user.fname} {item.user.lname}
+              </Typography>
+              <Rating name="read-only" value={item.rating} readOnly style={{marginTop: '1vh'}} />
               <Typography variant='body2' style={{width: '40vw', marginTop: '2vh'}}>
                 {item.description}
               </Typography>
