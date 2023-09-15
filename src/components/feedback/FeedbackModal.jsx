@@ -13,13 +13,14 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal() {
+export default function BasicModal(props) {
   const [openFeedback, setOpenFeedback] = React.useState(false);
   const handleOpenFeedback = () => setOpenFeedback(true);
   const handleCloseFeedback = () => setOpenFeedback(false);
   const [openIssue, setOpenIssue] = React.useState(false);
   const handleOpenIssue = () => setOpenIssue(true);
   const handleCloseIssue = () => setOpenIssue(false);
+
 
   return (
     <div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import Lottie from "react-lottie";
 import { Grid } from '@mui/material';
 import animation from './animation.json';
@@ -25,7 +24,7 @@ const Feedback = () => {
         />
         </Grid>
         <Grid item lg={7} md={7}>
-          <FeedbackModal />
+          <FeedbackModal/>
         </Grid>
       </Grid>
     </>

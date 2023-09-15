@@ -5,8 +5,8 @@ import { Grid, Typography } from '@mui/material';
 const preSelectedPlaces = [
   {
     name: 'Place A',
-    lat: 33.441740,
-    lng: -112.099480
+    latitude: 12.952253, 
+    longitude: 77.640015
   },
   // {
   //   name: 'Place B',
@@ -27,7 +27,8 @@ class MapComponent extends Component {
       selectedPlaces: preSelectedPlaces,
       origin: '',
       destination: '',
-      currentLocationMarker: null
+      currentLocationMarker: null,
+      locationArr: []
     };
   }
 
@@ -36,9 +37,23 @@ class MapComponent extends Component {
 
     // Create a new map
     const map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: 37.7749, lng: -122.4194 }, // Default center (San Francisco)
+      center: { lat: 12.852890430880702, lng: 77.59363374109776 }, // Default center (San Francisco)
       zoom: 14, // Default zoom level
     });
+
+    fetch('http://localhost:5128/api/StationInfo/geolocations')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({locationArr: data});
+      })
+      .catch((error) => {
+        this.setState({ error});
+      });
 
     this.setState({ map }, () => {
       this.renderSelectedPlacesMarkers(); // Render pre-selected locations as markers
@@ -180,24 +195,32 @@ class MapComponent extends Component {
     });
   }
 
-  addSelectedPlace = (place) => {
-    this.setState((prevState) => ({
-      selectedPlaces: [...prevState.selectedPlaces, place],
-    }));
-  };
+  // addSelectedPlace = (place) => {
+  //   this.setState((prevState) => ({
+  //     locationArr: [...prevState.locationArr, place],
+  //   }));
+  // };
 
   renderSelectedPlacesMarkers = () => {
-    const { map, selectedPlaces } = this.state;
-
-    selectedPlaces.forEach((place) => {
-      const marker = new window.google.maps.Marker({
-        map,
-        position: { lat: place.lat, lng: place.lng },
-        title: place.name,
-        icon: {
-          url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png', // Custom marker icon for selected places
-        },
+    const { map, locationArr } = this.state;
+    console.log('blehbleh', locationArr);
+    fetch('http://localhost:5128/api/StationInfo/geolocations')
+    .then((response) => response.json())
+    .then((data) => {
+      // Add markers for each location
+      data.forEach((place) => {
+        const marker = new window.google.maps.Marker({
+          map,
+          position: {lng: parseFloat(place.longitude), lat: parseFloat(place.latitude) },
+          // title: place.name,
+          icon: {
+                  url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png', // Custom marker icon for selected places
+                },
+        });
       });
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
     });
   };
 
@@ -260,7 +283,7 @@ class MapComponent extends Component {
   }
 
   render() {
-    const { origin, destination } = this.state;
+    const { origin, destination, locationArr } = this.state;
 
     return (
      <Grid container lg={12} md={12} style={{marginTop: '15vh'}}>
