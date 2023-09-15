@@ -149,6 +149,18 @@ export default function PrimarySearchAppBar() {
       </Link>
       </MenuItem>
       <MenuItem>
+      <IconButton
+          size="large"
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+          <ContactPageIcon />
+        </IconButton> 
+      <Link to='/client-feedback' style={{textDecoration: 'none'}}>
+      <p style={{color: '#000'}}>Client Feedback</p>
+      </Link>
+      </MenuItem>
+      <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -223,6 +235,7 @@ export default function PrimarySearchAppBar() {
             </IconButton> */}
             <Link to='/feedback' style={{textDecoration: 'none'}}><Typography style={{marginTop: '2vh', color: '#fff'}}>Feedback</Typography></Link>
             <Link to='/contact-us' style={{textDecoration: 'none'}}><Typography style={{marginTop: '2vh', marginLeft: '2vw', color: '#fff'}}>Contact Us</Typography></Link>
+            <Link to='/client-feedback' style={{textDecoration: 'none'}}><Typography style={{marginTop: '2vh', marginLeft: '2vw', color: '#fff'}}>Client Feedback</Typography></Link>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"

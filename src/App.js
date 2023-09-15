@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ContactUs from './pages/ContactUs';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import ClientFeedback from './pages/ClientFeedback';
 
 const App = () => {
   return(
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/client-feedback" element={<ClientFeedback />} />
       </Routes>
     </BrowserRouter>
     </div>
